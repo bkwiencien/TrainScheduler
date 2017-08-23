@@ -6,8 +6,10 @@ var train = {
 	nextArrival: "",
 	minutesAway:  0
 	};
-function Train(name) {
+function Train(name,desto,freq) {
 	this.trainName = name;
+	this.destination = desto;
+	this.frequency = freq;
 };
 var timeStarted = new Date()
 var arrayOfTrains = [];
@@ -25,10 +27,11 @@ function administrator() {
 
 }
 function createTrains() {
-	var t = new Train("cleveland");
+	var t = new Train("cleveland","Erie",120);
 	arrayOfTrains.push(t);
 	console.log(arrayOfTrains.length);
-	console.log(arrayOfTrains[0].trainName)
+	console.log(arrayOfTrains[0].trainName);
+	console.log(arrayOfTrains[0].destination);
 
 
 }
