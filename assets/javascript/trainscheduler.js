@@ -1,7 +1,7 @@
-var arrayOfDestinations = ["Cleveland","chicago","Dallas","san Francisco","Indianapolis","Columbus"];
-var arrayOfTrainNames   = ["tain1","train2","train3","train4","train5","train6","train7"];
-var timeStarted = new Date()
 var arrayOfTrains = [];
+var arrayOfDestinations = ["Cleveland","chicago","Dallas","san Francisco","Indianapolis","Columbus","hartford"];
+var arrayOfTrainNames   = ["train1","train2","train3","train4","train5","train6","train7"];
+var timeStarted = new Date()
 var connectAS ="";
 var train = {
 	trainName:  "",
@@ -33,21 +33,19 @@ function administrator() {
 function createTrains() {
 	minaway = generateMinutes()
 	var currentDate = new Date();
-	var t = new Train("cleveland","Erie",120,0,minaway);
 	var minAway = generateMinutes();
 	calculateArrivalTime();
 	arrayOfTrains.push(t);
 	for (j=0;j<arrayOfTrainNames.length;j++) {
 	  var freq = generateFrequence();
-	  var t = new Train(arrayOfTrainNames[j],arrayOfDestinations[j],freq,"30",minAway);
+	  var t = new Train(arrayOfTrainNames[j],arrayOfDestinations[j],freq,"",minAway);
 	  arrayOfTrains.push(t);
-	  console.log("train name = " +arrayOfTrainNames[j]);
-	  console.log("destination = " + arrayOfDestinations[j]);
-	  console.log("frequency = " + 120);
-	  console.log("nextArrival = " + arrayOfTrains[j].nextArrival);
-	  console.log("minutesAway = " +arrayOfTrains[j].minutesAway);
-	}
-}
+    }
+ for (k=1;k<arrayOfTrains.length;k++){
+ 	console.log("in loop " + arrayOfTrains[k].trainName);
+ 	console.log("in loop " + arrayOfTrains[k].destination);
+ }
+
 function generateMinutes() {
 	var tempnum = Math.round(Math.random()*100);
 	return(tempnum);
@@ -56,5 +54,11 @@ function calculateArrivalTime () {
 	return(0);
 }
 function generateFrequence () {
-	return(120);
+	var tempnum = Math.round(Math.random()*1000);
+	if (tempnum <20) {
+		tempnum = 20;
+	}
+	return(tempnum);
+	
+}
 }
