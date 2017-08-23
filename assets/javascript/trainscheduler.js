@@ -1,5 +1,5 @@
-var arrayOfDestinations = ["Cleveland","chicago","Dallas","san Francisco"];
-var arrayOfTrainNames   = ["tain1","train2","train3","train4","train5"];
+var arrayOfDestinations = ["Cleveland","chicago","Dallas","san Francisco","Indianapolis","Columbus"];
+var arrayOfTrainNames   = ["tain1","train2","train3","train4","train5","train6","train7"];
 var timeStarted = new Date()
 var arrayOfTrains = [];
 var connectAS ="";
