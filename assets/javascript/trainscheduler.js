@@ -44,6 +44,7 @@ function createTrains() {
  for (k=1;k<arrayOfTrains.length;k++){
  	console.log("in loop " + arrayOfTrains[k].trainName);
  	console.log("in loop " + arrayOfTrains[k].destination);
+ 	console.log("in loop " + arrayOfTrains[k].frequency);
  }
 
 function generateMinutes() {
@@ -57,6 +58,9 @@ function generateFrequence () {
 	var tempnum = Math.round(Math.random()*1000);
 	if (tempnum <20) {
 		tempnum = 20;
+	}
+	if (tempnum < 100) {
+		tempnum = 120;
 	}
 	return(tempnum);
 	
