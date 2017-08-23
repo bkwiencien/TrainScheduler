@@ -34,10 +34,10 @@ function createTrains() {
 	minaway = generateMinutes()
 	var currentDate = new Date();
 	var t = new Train("cleveland","Erie",120,0,minaway);
+	var minAway = generateMinutes();
 	calculateArrivalTime();
 	arrayOfTrains.push(t);
 	for (j=0;j<arrayOfTrainNames.length;j++) {
-	  var minAway = generateMinutes();
 	  var freq = generateFrequence();
 	  var t = new Train(arrayOfTrainNames[j],arrayOfDestinations[j],freq,"30",minAway);
 	  arrayOfTrains.push(t);
@@ -49,7 +49,8 @@ function createTrains() {
 	}
 }
 function generateMinutes() {
-	return(25);
+	var tempnum = Math.round(Math.random()*100);
+	return(tempnum);
 }
 function calculateArrivalTime () {
 	return(0);
