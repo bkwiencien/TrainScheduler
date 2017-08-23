@@ -37,7 +37,8 @@ function createTrains() {
 	arrayOfTrains.push(t);
 	for (j=0;j<arrayOfTrainNames.length;j++) {
 	  var minAway = generateMinutes();
-	  var t = new Train(arrayOfTrainNames[j],arrayOfDestinations[j],120,"30",minAway);
+	  var freq = generateFrequence();
+	  var t = new Train(arrayOfTrainNames[j],arrayOfDestinations[j],freq,"30",minAway);
 	  arrayOfTrains.push(t);
 	  console.log("train name = " +arrayOfTrainNames[j]);
 	  console.log("destination = " + arrayOfDestinations[j]);
@@ -51,4 +52,7 @@ function generateMinutes() {
 }
 function calculateArrivalTime () {
 	return(0);
+}
+function generateFrequence () {
+	return(120);
 }
