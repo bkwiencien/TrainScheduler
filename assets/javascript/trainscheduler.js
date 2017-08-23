@@ -32,6 +32,7 @@ function administrator() {
 }
 function createTrains() {
 	minaway = generateMinutes()
+	var currentDate = new Date();
 	var t = new Train("cleveland","Erie",120,0,minaway);
 	calculateArrivalTime();
 	arrayOfTrains.push(t);
