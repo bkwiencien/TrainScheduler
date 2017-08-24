@@ -1,3 +1,13 @@
+var stationTimer = setInterval(function() {
+	    var dd = new Date();
+	    var day = dd.getDay();
+	    var month = dd.getMonth();
+		var hour = dd.getHours();
+		var minutes = dd.getMinutes();
+		var scsonds = dd.getSeconds();
+		var rightNow = hour+":"+minutes+":"+scsonds;
+		$("h1").text("Train schedule current time: "+ hour+":"+ minutes+ ":" + scsonds);
+	},2000);
 var arrayOfTrains = [];
 var arrayOfDestinations = ["Cleveland","chicago","Dallas","san Francisco","Indianapolis","Columbus","hartford"];
 var arrayOfTrainNames   = ["train1","train2","train3","train4","train5","train6","train7"];
