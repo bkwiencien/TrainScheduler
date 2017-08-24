@@ -33,35 +33,23 @@ function administrator() {
 function createTrains() {
 	minaway = generateMinutes()
 	var currentDate = new Date();
-	var minAway = generateMinutes();
-	arrayOfTrains.push(t);
 	for (j=0;j<arrayOfTrainNames.length;j++) {
+	  var minAway = generateMinutes();
 	  var ariveAt = calculateArrivalTime(minAway);	
 	  var freq = generateFrequence();
 	  var t = new Train(arrayOfTrainNames[j],arrayOfDestinations[j],freq,"",minAway);
 	  arrayOfTrains.push(t);
     }
- //for (k=1;k<arrayOfTrains.length;k++){
-// 	console.log("in loop " + arrayOfTrains[k].trainName);
-// 	console.log("in loop " + arrayOfTrains[k].destination);
-// 	console.log("in loop " + arrayOfTrains[k].frequency);
-// }
-
 function generateMinutes() {
 	var tempnum = Math.round(Math.random()*100);
 	return(tempnum);
 }
 function calculateArrivalTime (aw) {
-	var d = (new Date() + aw*1000);
+	//var d = (new Date() + aw*1000);
 	var dd = new Date();
-	console.log("right now it is " + dd);
-	console.log(d);
-	//var year  = d.getFullYear();
- 	//var month = d.getMonth();
- 	//var day   = d.getDay();
- 	//var hour  = d.getHour();
-    //var minute   = d.getMinute();
-    console.log(d);
+	console.log("right now it is "+ dd);
+	var arrivalDate = addMinutes(dd,aw);
+	console.log("will arrive at "+ arrivalDate);
 	return(" ");
 }
 function generateFrequence () {
@@ -75,4 +63,7 @@ function generateFrequence () {
 	return(tempnum);
 	
 }
+}
+function addMinutes(datein,minutesin){
+	return new Date(datein.getTime() + minutesin*60000);
 }
