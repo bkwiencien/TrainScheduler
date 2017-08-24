@@ -14,7 +14,7 @@ function Train(name,desto,freq,nexto,minawat) {
 	this.trainName = name;
 	this.destination = desto;
 	this.frequency = freq;
-	this.nextArrival = "";
+	this.nextArrival = nexto;
 	this.minutesAway = minawat;
 };
 function clerk() {
@@ -28,16 +28,15 @@ function administrator() {
   $("#buttons").remove();
   $("#status").text("connected as administrator");
   createTrains();
-
 }
 function createTrains() {
 	minaway = generateMinutes()
 	var currentDate = new Date();
 	for (j=0;j<arrayOfTrainNames.length;j++) {
 	  var minAway = generateMinutes();
-	  var ariveAt = calculateArrivalTime(minAway);	
+	  var arriveAt = calculateArrivalTime(minAway);	
 	  var freq = generateFrequence();
-	  var t = new Train(arrayOfTrainNames[j],arrayOfDestinations[j],freq,"",minAway);
+	  var t = new Train(arrayOfTrainNames[j],arrayOfDestinations[j],freq,arriveAt,minAway);
 	  arrayOfTrains.push(t);
     }
 function generateMinutes() {
@@ -45,17 +44,14 @@ function generateMinutes() {
 	return(tempnum);
 }
 function calculateArrivalTime (aw) {
-	//var d = (new Date() + aw*1000);
 	var dd = new Date();
-	console.log("right now it is "+ dd);
 	var arrivalDate = addMinutes(dd,aw);
-	console.log("will arrive at "+ arrivalDate);
-	return(" ");
+	return(arrivalDate);
 }
 function generateFrequence () {
 	var tempnum = Math.round(Math.random()*1000);
 	if (tempnum <20) {
-		tempnum = 20;
+		tempnum = 22;
 	}
 	if (tempnum < 100) {
 		tempnum = 120;
