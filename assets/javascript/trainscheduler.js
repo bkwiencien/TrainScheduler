@@ -42,14 +42,14 @@ function clerk() {
   $("#buttons").remove();
   $("#status").text("connected as clerk");
   $("#addtrain").remove();
-  createTrains();
+  //createTrains();
 }
 function administrator() {
   connectAs = "a";
   $("#buttons").remove();
   $("#status").text("connected as administrator");
   $("#addtrain").show();
-  createTrains();
+  //createTrains();
 }
 function createTrains() {
 	minaway = generateMinutes()
@@ -86,8 +86,8 @@ function addMinutes(datein,minutesin){
 	return new Date(datein.getTime() + minutesin*60000);
 }
 function initialize() {
-	console.log("initialize");
 	$("#addtrain").hide();
 	firebase.initializeApp(config);
 	database = firebase.database();
+	createTrains();
 }
