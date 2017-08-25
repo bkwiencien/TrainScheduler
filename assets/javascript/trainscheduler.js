@@ -20,6 +20,16 @@ var train = {
 	nextArrival: "",
 	minutesAway:  0
 	};
+var config = {
+    apiKey: "AIzaSyDUDwognydTUiE1UKjzsgv7d85dY-4faPE",
+    authDomain: "bob-sproject.firebaseapp.com",
+    databaseURL: "https://bob-sproject.firebaseio.com",
+    projectId: "bob-sproject",
+    storageBucket: "bob-sproject.appspot.com",
+    messagingSenderId: "797447312452"
+  };
+//firebase.initializeApp(config);  
+var database;
 function Train(name,desto,freq,nexto,minawat) {
 	this.trainName = name;
 	this.destination = desto;
@@ -76,5 +86,8 @@ function addMinutes(datein,minutesin){
 	return new Date(datein.getTime() + minutesin*60000);
 }
 function initialize() {
+	console.log("initialize");
 	$("#addtrain").hide();
+	firebase.initializeApp(config);
+	database = firebase.database();
 }
