@@ -31,12 +31,14 @@ function clerk() {
   connectAs = "c";
   $("#buttons").remove();
   $("#status").text("connected as clerk");
+  $("#addtrain").remove();
   createTrains();
 }
 function administrator() {
   connectAs = "a";
   $("#buttons").remove();
   $("#status").text("connected as administrator");
+  $("#addtrain").show();
   createTrains();
 }
 function createTrains() {
@@ -72,4 +74,7 @@ function generateFrequence () {
 }
 function addMinutes(datein,minutesin){
 	return new Date(datein.getTime() + minutesin*60000);
+}
+function initialize() {
+	$("#addtrain").hide();
 }
