@@ -97,7 +97,9 @@ function createATrain() {
 }
 function createTable() {
 	console.log("in createTable");
+	var arrayOfCatagories = ["Train Name","Destination","Frequency","Next Arrival","Minutes Away",];
 	var w;
+	var h;
 	var r = $("<tr>");
 	var name ="";
 	var destination;
@@ -127,6 +129,8 @@ function createTable() {
         data.html(nextArrivalFormatted);
         r.append(data);
         data=$("<td>");
+        console.log("set attr to "+"away"+i);
+        data.attr("id","away"+i);
         data.html(minutesAway);
         r.append(data);
         $("#table-body").append(r);
