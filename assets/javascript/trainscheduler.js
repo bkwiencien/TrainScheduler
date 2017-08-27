@@ -10,7 +10,7 @@ var stationTimer = setInterval(function() {
 	},2000);
 var arrayOfTrains = [];
 var arrayOfDestinations = ["Cleveland","chicago","Dallas","San Francisco","Indianapolis","Columbus","hartford"];
-var arrayOfTrainNames   = ["Blazer","WindyCityExpress","Cowboy","West Coast","Indy","Capitol","East Coast"];
+var arrayOfTrainNames   = ["Blazer","WindyExpress","Cowboy","West Coast","Indy","Capitol","East Coast"];
 var timeStarted = new Date()
 var connectAS ="";
 var train = {
@@ -73,7 +73,7 @@ function calculateArrivalTime (aw) {
 function generateFrequence () {
 	var tempnum = Math.round(Math.random()*1000);
 	if (tempnum <20) {
-		tempnum = 22;
+		tempnum = 30;
 	}
 	if (tempnum < 100) {
 		tempnum = 120;
@@ -97,18 +97,16 @@ function createATrain() {
 }
 function createTable() {
 	console.log("in createTable");
-	var data = $("<td>");
 	var w;
-	var r=$("<tr>");
+	var r = $("<tr>");
 	var name ="";
 	var destination;
 	var frequency;
 	var nextArrival;
 	var minutesAway;
-	//for (i=0;i<arrayOfTrains.length;i++) {
-	for (i=0;i<1;i++) {	
+	for (i=0;i<arrayOfTrains.length;i++) {
+		r = $("<tr>");
 		w=arrayOfTrains[i];
-		debugger;
         name = w.trainName;
         frequency = w.frequency;
         nextArrival = w.nextArrival;
@@ -117,17 +115,21 @@ function createTable() {
         data = $('<td>');
         data.html(name);
         r.append(data);
+        data = $("<td>");
         data.html(destination);
         r.append(data);
+        data = $("<td>");
         data.html(frequency);
-        r.append(data);
+        r.append(data)
+        data = $("<td>");
         data.html(nextArrival);
         r.append(data);
+        data=$("<td>");
         data.html(minutesAway);
         r.append(data);
-
+        $("#table-body").append(r);
 	}
-	$("table-body").append(r);
+	$("#table-body").append(r);
 //	for (var i=0; i<arrayOfTrains.length; i++)
 //	{
 //		var data = $('<td>');
