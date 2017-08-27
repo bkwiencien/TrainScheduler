@@ -5,8 +5,19 @@ var stationTimer = setInterval(function() {
 		var hour = dd.getHours();
 		var minutes = dd.getMinutes();
 		var scsonds = dd.getSeconds();
+		var count = 0;
+		var firstTime = true;
 		var rightNow = hour+":"+minutes+":"+scsonds;
 		$("h1").text("Train schedule current time: "+ hour+":"+ minutes+ ":" + scsonds);
+		if (firstTime) {
+			firstTime = false;
+			count++;
+		}
+		count++;
+		if (count % 60 == 0) {
+			updateMinutesAway();
+		}
+		console.log("count = " + count);
 	},2000);
 var arrayOfTrains = [];
 var arrayOfDestinations = ["Cleveland","chicago","Dallas","San Francisco","Indianapolis","Columbus","hartford"];
@@ -148,4 +159,7 @@ function updateDataBase() {;
 		arrayOfRefs.push(result);
 	}
 
+}
+function minutesAway() {
+	console.log("in updateMinutesAway");
 }
