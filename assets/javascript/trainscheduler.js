@@ -145,6 +145,7 @@ function updateDataBase() {;
 	for (i=0;i<arrayOfTrains.length;i++) {
 		console.log(i);
 		var result = rootRef.push(arrayOfTrains[i]);
+		arrayOfRefs.push(result);
 	}
 
 }
