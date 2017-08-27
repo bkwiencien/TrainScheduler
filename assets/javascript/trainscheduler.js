@@ -164,9 +164,14 @@ function updateDataBase() {;
 function updateMinutesAway() {
 	console.log("in updateMinutesAway");
 	for (i=0;i<arrayOfTrains.length;i++) {
-		if (arrayOfTrains[i].minutesAway > 1) {
+		if (arrayOfTrains[i].minutesAway > 0) {
 		  arrayOfTrains[i].minutesAway--;
+		  $("#away"+i).html(arrayOfTrains[i].minutesAway);
 	    }
+	    if (arrayOfTrains[i].minutesAway[i] == 0) {
+		  $("#away"+i).html(arrived);
+	    }
+
 		console.log("minutes.Away = " + arrayOfTrains[i].minutesAway);
 
 	}
