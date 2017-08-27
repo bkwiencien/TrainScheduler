@@ -164,7 +164,9 @@ function updateDataBase() {;
 function updateMinutesAway() {
 	console.log("in updateMinutesAway");
 	for (i=0;i<arrayOfTrains.length;i++) {
-		arrayOfTrains[i].minutesAway--;
+		if (arrayOfTrains[i].minutesAway > 1) {
+		  arrayOfTrains[i].minutesAway--;
+	    }
 		console.log("minutes.Away = " + arrayOfTrains[i].minutesAway);
 
 	}
