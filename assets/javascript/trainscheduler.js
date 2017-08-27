@@ -90,7 +90,63 @@ function initialize() {
 	firebase.initializeApp(config);
 	database = firebase.database();
 	createTrains();
+	createTable();
 }
 function createATrain() {
 	console.log("in create a train");
 }
+function createTable() {
+	console.log("in createTable");
+	var data = $("<td>");
+	var w;
+	var r=$("<tr>");
+	var name ="";
+	var destination;
+	var frequency;
+	var nextArrival;
+	var minutesAway;
+	//for (i=0;i<arrayOfTrains.length;i++) {
+	for (i=0;i<1;i++) {	
+		w=arrayOfTrains[i];
+		debugger;
+        name = w.trainName;
+        frequency = w.frequency;
+        nextArrival = w.nextArrival;
+        minutesAway = w.minutesAway;
+        destination = w.destination;
+        data = $('<td>');
+        data.html(name);
+        r.append(data);
+        data.html(destination);
+        r.append(data);
+        data.html(frequency);
+        r.append(data);
+        data.html(nextArrival);
+        r.append(data);
+        data.html(minutesAway);
+        r.append(data);
+
+	}
+	$("table-body").append(r);
+//	for (var i=0; i<arrayOfTrains.length; i++)
+//	{
+//		var data = $('<td>');
+//		data.html(dataValues[i])
+//		r.append(data)
+//	}
+
+//	var dataMW = $('<td>')
+//	dataMW.html(monthDifference)
+//	r.append(dataMW)
+
+//	var dataMR = $('<td>')
+//	dataMR.html("$"+dataValues[3])
+//	r.append(dataMR)
+
+//	var total = $('<td>')
+//	total.html("$"+totalBilled)
+//	r.append(total)
+//
+//	$('#table-body').append(r)
+}
+

@@ -19,21 +19,34 @@
 <div class="container">
 <div class="jumbotron" id="main">
   <div clas="row">
-    <div class="col-lg-10">
+    <div class="col-lg-6">
       <hr id="line1">
       <div id="buttons">
         <button onclick="javascript:administrator()">Connect as Administrator</button>
         <button onclick="javascript:clerk()">Connect as clerk</button>
-
       </div>  
     </div>
   </div>
   </div>  
-       <div class="col-lg-2">
+       <div class="col-lg-6">
          <div class="row">
       <hr id="line2">
       <section id="schedulesection">
         <p id="status"> ............ </p>
+         <table class="table">
+                <thead>
+                          <tr>
+                            <th>Train Name</th>
+                            <th>Destination</th>
+                            <th>Frequency:<th>
+                            <th>Next Arrival</th>
+                            <th>Minutes Away</th>
+                          </tr>
+                         </thead>
+                         <tbody id="table-body">
+                         </tbody>
+            </table>
+
       </section>  
       <div id="addtrain">
         <form role="form" action="javascript:createATrain()">
