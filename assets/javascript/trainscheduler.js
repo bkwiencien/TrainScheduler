@@ -129,32 +129,11 @@ function createTable() {
         data.html(nextArrivalFormatted);
         r.append(data);
         data=$("<td>");
-        console.log("set attr to "+"away"+i);
         data.attr("id","away"+i);
         data.html(minutesAway);
         r.append(data);
         $("#table-body").append(r);
 	}
 	$("#table-body").append(r);
-//	for (var i=0; i<arrayOfTrains.length; i++)
-//	{
-//		var data = $('<td>');
-//		data.html(dataValues[i])
-//		r.append(data)
-//	}
-
-//	var dataMW = $('<td>')
-//	dataMW.html(monthDifference)
-//	r.append(dataMW)
-
-//	var dataMR = $('<td>')
-//	dataMR.html("$"+dataValues[3])
-//	r.append(dataMR)
-
-//	var total = $('<td>')
-//	total.html("$"+totalBilled)
-//	r.append(total)
-//
-//	$('#table-body').append(r)
 }
 
