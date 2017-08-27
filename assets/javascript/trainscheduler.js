@@ -19,7 +19,7 @@ var stationTimer = setInterval(function() {
 		}
 		count++;
 		console.log("count = " + count);
-	},2000);
+	},1000);
 var arrayOfTrains = [];
 var arrayOfDestinations = ["Cleveland","chicago","Dallas","San Francisco","Indianapolis","Columbus","hartford"];
 var arrayOfTrainNames   = ["Blazer","WindyExpress","Cowboy","West Coast","Indy","Capitol","East Coast"];
@@ -169,7 +169,7 @@ function updateMinutesAway() {
 		  $("#away"+i).html(arrayOfTrains[i].minutesAway);
 	    }
 	    if (arrayOfTrains[i].minutesAway[i] == 0) {
-		  $("#away"+i).html(arrived);
+		  $("#away"+i).html("arrived");
 	    }
 
 		console.log("minutes.Away = " + arrayOfTrains[i].minutesAway);
