@@ -110,6 +110,8 @@ function createTable() {
         name = w.trainName;
         frequency = w.frequency;
         nextArrival = w.nextArrival;
+        momentTime = moment(nextArrival);
+        nextArrivalFormatted = momentTime.format('M Do YYYY, h:mm');
         minutesAway = w.minutesAway;
         destination = w.destination;
         data = $('<td>');
@@ -122,7 +124,7 @@ function createTable() {
         data.html(frequency);
         r.append(data)
         data = $("<td>");
-        data.html(nextArrival);
+        data.html(nextArrivalFormatted);
         r.append(data);
         data=$("<td>");
         data.html(minutesAway);
