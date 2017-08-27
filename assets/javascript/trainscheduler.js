@@ -1,3 +1,5 @@
+var firstTime = true;
+var count = 0;
 var stationTimer = setInterval(function() {
 	    var dd = new Date();
 	    var day = dd.getDay();
@@ -5,18 +7,17 @@ var stationTimer = setInterval(function() {
 		var hour = dd.getHours();
 		var minutes = dd.getMinutes();
 		var scsonds = dd.getSeconds();
-		var count = 0;
-		var firstTime = true;
 		var rightNow = hour+":"+minutes+":"+scsonds;
 		$("h1").text("Train schedule current time: "+ hour+":"+ minutes+ ":" + scsonds);
 		if (firstTime) {
 			firstTime = false;
+			console.log("firstTime was true");
 			count++;
 		}
-		count++;
 		if (count % 60 == 0) {
 			updateMinutesAway();
 		}
+		count++;
 		console.log("count = " + count);
 	},2000);
 var arrayOfTrains = [];
@@ -160,6 +161,6 @@ function updateDataBase() {;
 	}
 
 }
-function minutesAway() {
+function updateMinutesAway() {
 	console.log("in updateMinutesAway");
 }
