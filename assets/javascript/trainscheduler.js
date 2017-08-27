@@ -11,6 +11,7 @@ var stationTimer = setInterval(function() {
 var arrayOfTrains = [];
 var arrayOfDestinations = ["Cleveland","chicago","Dallas","San Francisco","Indianapolis","Columbus","hartford"];
 var arrayOfTrainNames   = ["Blazer","WindyExpress","Cowboy","West Coast","Indy","Capitol","East Coast"];
+var arrayOfRefs =[];
 var timeStarted = new Date()
 var connectAS ="";
 var train = {
@@ -92,6 +93,7 @@ function initialize() {
 	rootRef = firebase.database().ref("TrainScheduler");
 	createTrains();
 	createTable();
+	rootRef.remove();
 	updateDataBase();
 }
 function createATrain() {
@@ -138,6 +140,11 @@ function createTable() {
 	}
 	$("#table-body").append(r);
 }
-function updateDataBase() {
+function updateDataBase() {;
+	console.log("in update database");
+	for (i=0;i<arrayOfTrains.length;i++) {
+		console.log(i);
+		var result = rootRef.push(arrayOfTrains[i]);
+	}
 
 }
