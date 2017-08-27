@@ -91,3 +91,6 @@ function initialize() {
 	database = firebase.database();
 	createTrains();
 }
+function createATrain() {
+	console.log("in create a train");
+}
