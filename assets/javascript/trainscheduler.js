@@ -167,11 +167,12 @@ function updateMinutesAway() {
 		if (arrayOfTrains[i].minutesAway > 0) {
 		  arrayOfTrains[i].minutesAway--;
 		  $("#away"+i).html(arrayOfTrains[i].minutesAway);
-	    }
-	    if (arrayOfTrains[i].minutesAway[i] == 0) {
+	    } else {
 		  $("#away"+i).html("arrived");
 	    }
-
+	    if (arrayOfTrains[i].minutesAway == 0 ) {
+	    	$("#away"+i).html("arrived");
+	    }
 		console.log("minutes.Away = " + arrayOfTrains[i].minutesAway);
 
 	}
