@@ -28,7 +28,7 @@ var config = {
     storageBucket: "bob-sproject.appspot.com",
     messagingSenderId: "797447312452"
   };
-//firebase.initializeApp(config);  
+ var rootRef;
 var database;
 function Train(name,desto,freq,nexto,minawat) {
 	this.trainName = name;
@@ -89,8 +89,10 @@ function initialize() {
 	$("#addtrain").hide();
 	firebase.initializeApp(config);
 	database = firebase.database();
+	rootRef = firebase.database().ref("TrainScheduler");
 	createTrains();
 	createTable();
+	updateDataBase();
 }
 function createATrain() {
 	console.log("in create a train");
@@ -136,4 +138,6 @@ function createTable() {
 	}
 	$("#table-body").append(r);
 }
+function updateDataBase() {
 
+}
