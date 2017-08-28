@@ -11,14 +11,12 @@ var stationTimer = setInterval(function() {
 		$("h1").text("Train schedule current time: "+ hour+":"+ minutes+ ":" + scsonds);
 		if (firstTime) {
 			firstTime = false;
-			console.log("firstTime was true");
 			count++;
 		}
 		if (count % 60 == 0) {
 			updateMinutesAway();
 		}
 		count++;
-		console.log("count = " + count);
 	},1000);
 var arrayOfTrains = [];
 var arrayOfDestinations = ["Cleveland","chicago","Dallas","San Francisco","Indianapolis","Columbus","hartford"];
@@ -47,8 +45,11 @@ function Train(name,desto,freq,nexto,minawat) {
 	this.trainName = name;
 	this.destination = desto;
 	this.frequency = freq;
-	this.nextArrival = nexto;
+	momentTime = moment(nexto);
+	this.nextArrival  = momentTime.format('M Do YYYY, h:mm');
+    minutesAway = minawat;
 	this.minutesAway = minawat;
+	console.log("in Train nextArrival " + nexto);
 };
 function clerk() {
   connectAs = "c";
@@ -142,7 +143,7 @@ function createTable() {
         data.html(frequency);
         r.append(data)
         data = $("<td>");
-        data.html(nextArrivalFormatted);
+        data.html(nextArrival);
         r.append(data);
         data=$("<td>");
         data.attr("id","away"+i);
@@ -155,7 +156,7 @@ function createTable() {
 function updateDataBase() {;
 	console.log("in update database");
 	for (i=0;i<arrayOfTrains.length;i++) {
-		console.log(i);
+		console.log("nextArrival = " + arrayOfTrains[i].nextArrival);
 		var result = rootRef.push(arrayOfTrains[i]);
 		arrayOfRefs.push(result);
 	}
@@ -172,8 +173,10 @@ function updateMinutesAway() {
 	    }
 	    if (arrayOfTrains[i].minutesAway == 0 ) {
 	    	$("#away"+i).html("arrived");
-	    }
-		console.log("minutes.Away = " + arrayOfTrains[i].minutesAway);
-
+	    }	
 	}
+	updateFireBase();
+}
+function updateFireBase() {
+	console.log("in updateFireBase");
 }
