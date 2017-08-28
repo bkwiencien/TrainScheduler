@@ -1,5 +1,6 @@
 h1 {
-	background-color: brown;
+	background-color: blue;
+	color: white;
 }
 .form-group {
 	size: 200px;
@@ -11,6 +12,9 @@ h1 {
 table, th, td {
     border: 1px solid black;
 }
-#form1 {
+#addtrain {
 	border: 1px solib black;
+}
+form {
+	border: 1px solid black;
 }
