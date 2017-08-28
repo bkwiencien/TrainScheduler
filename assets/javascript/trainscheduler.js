@@ -194,8 +194,17 @@ function calculateNextArrival(freq) {
 	var fstart = start.format('MMMM Do YYYY, h:mm:ss a');
 	var firstArrival = start.add(3,'hours');
 	var ffirstArrival = firstArrival.format('MMMM Do YYYY, h:mm:ss a');
+	console.log("firstArrival = " + ffirstArrival);
 	var today3am;
+	var timediffms = now - firstArrival;
+	var duration = moment.duration(timediffms);
+	var hours    = duration.hours();
+	var minn = duration.minutes();
 	console.log(ffirstArrival);
+	console.log(minn);
+	console.log(hours);
+
+
 	return(moment());
 }
 
