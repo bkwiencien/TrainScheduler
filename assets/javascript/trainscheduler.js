@@ -110,6 +110,15 @@ function initialize() {
 	updateDataBase();
 }
 function createATrain() {
+	var nameo = "";
+	var desto = "";
+	var freq = 0;
+	nameo = $("#train-name-input").val().trim();
+	desto = $("#destination-input").val().trim();
+	freq  = $("#frequency-input").val();
+	console.log("name = " + nameo);
+	console.log("desto = " + desto);
+	console.log("freq = " + freq);
 	console.log("in create a train");
 }
 function createTable() {
@@ -180,3 +189,12 @@ function updateMinutesAway() {
 function updateFireBase() {
 	console.log("in updateFireBase");
 }
+//$("#add-train").on("click", function(event) {
+//   event.preventDefault();	
+//  console.log("clicked");
+//  var nameo = $("#train-name-input");
+//  console.log("clicked " + nameo);
+//  console.log(this);
+//});
+
+

@@ -49,24 +49,12 @@
 
       </section>  
       <div id="addtrain">
-        <form role="form" action="javascript:createATrain()">
-             <div class="panel panel-default">
-              <h2> add train<h2>
-              </div>
-              <div class="form-group">
-                <label for="train-name-input">Train Name:</label>
-                <input class="form-control" id="train-name-input" type="text" size="30">
-              </div>
-              <div class="form-group">
-                <label for="email-input">Destination:</label>
-                <input class="form-control" id="destination-input" type="text" size="30">
-              </div>
-              <div class="form-group">
-                <label for="frequency-input">Frequency:</label>
-                <input class="form-control" id="frequency-input" type="number" size="30">
-              </div>
-              <button class="btn btn-default" id="add-train" type="submit">Submit</button>
-            </form>
+        <form id="form1" action="javascript:createATrain()">
+          Train Name: <input id="train-name-input" type="text" name="name"><br>
+          Destination:  <input id="destination-input" type="text" name="dest"><br>
+          Frequency:  <input id="frequency-input" type="text" name="freq"><br>
+          <input type="submit" value="add train">
+        </form>  
       </div>
       </div>
   </div>
