@@ -201,7 +201,11 @@ function calculateNextArrival(freq) {
 	var hours    = duration.hours();
 	var minn = duration.minutes();
 	var totalMinutes = 60*hours + minn;
-	var modo = totalMinutes % freq;
+    if (totalMinutes > freq) {
+	  var modo = totalMinutes % freq;
+	 } else {
+	 	var modo = freq;
+	 }
 	console.log(ffirstArrival);
 	console.log(minn);
 	console.log(hours);
