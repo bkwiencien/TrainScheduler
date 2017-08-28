@@ -1,5 +1,7 @@
 var firstTime = true;
 var count = 0;
+var gencount = 0;
+var minAway;
 var stationTimer = setInterval(function() {
 	    var dd = new Date();
 	    var day = dd.getDay();
@@ -75,8 +77,9 @@ function createTrains() {
 	  arrayOfTrains.push(t);
     }
 function generateMinutes() {
+	gencount++;
 	var tempnum = Math.round(Math.random()*100);
-	return(tempnum);
+	return(gencount);
 }
 function calculateArrivalTime (aw) {
 	var dd = new Date();
@@ -113,6 +116,8 @@ function createATrain() {
 	var desto = "";
 	var freq = 0;
 	var nextArrival = "";
+	var minutesAway = 0;
+	var now = moment();
 	nameo = $("#train-name-input").val().trim();
 	desto = $("#destination-input").val().trim();
 	freq  = $("#frequency-input").val().trim();
@@ -122,7 +127,16 @@ function createATrain() {
 	if (desto == "") {
 		$("#status").html("<strong>Destination cannot be null</strong>");
 	}
-	calculateNextArrival(freq);
+	nextArrival = calculateNextArrival(freq);
+	console.log("in createATrain nextArrival = " + nextArrival.format('MMMM Do YYYY, h:mm:ss a'));
+	console.log("in createATrain now = " + now.format('MMMM Do YYYY, h:mm:ss a'));
+	var timediffms = nextArrival - now;
+	var duration = moment.duration(timediffms);
+	console.log("in createATrain duration = " + duration);
+	var minutesAway = duration/60000;
+	console.log("in createATrain seconds "+ duration.seconds());
+	console.log("in createATrain minutesAway = "+ minutesAway);
+
 }
 function createTable() {
 	var arrayOfCatagories = ["Train Naame","Destination","Frequency","Next Arrival","Minutes Away",];
@@ -190,6 +204,7 @@ function updateFireBase() {
 }
 function calculateNextArrival(freq) {
 	var now = moment();
+	var nextArrival ="";
 	var start = moment().startOf('day');
 	var fstart = start.format('MMMM Do YYYY, h:mm:ss a');
 	var firstArrival = start.add(3,'hours');
@@ -212,9 +227,9 @@ function calculateNextArrival(freq) {
 	console.log("total minutes = " + totalMinutes);
 	console.log("modo = " + modo);
 	console.log("freq = " + freq);
-
-
-	return(moment());
+	var tt = now.add(freq,'minutes');
+	console.log("tt = " + tt.format('MMMM Do YYYY, h:mm:ss a'));
+	return(tt);
 }
 
 
