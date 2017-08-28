@@ -254,13 +254,13 @@ function calculateNextArrival(freq) {
 	 } else {
 	 	var modo = freq;
 	 }
-	console.log(ffirstArrival);
+	console.log("3 AM " + ffirstArrival);
 	console.log(minn);
 	console.log(hours);
 	console.log("total minutes = " + totalMinutes);
 	console.log("modo = " + modo);
 	console.log("freq = " + freq);
-	var tt = now.add(freq,'minutes');
+	var tt = now.add(modo,'minutes');
 	console.log("tt = " + tt.format('MMMM Do YYYY, h:mm:ss a'));
 	return(tt);
 }
