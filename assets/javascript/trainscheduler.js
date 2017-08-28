@@ -137,7 +137,9 @@ function createATrain() {
 	console.log("in createATrain seconds "+ duration.minutes());
 	console.log("in createATrain minutesAway = "+ minutesAway);
 	var t = new Train(nameo,desto,freq,nextArrival,minutesAway);
+	arrayOfTrainNames.push(nameo);
 	arrayOfTrains.push(t);
+	arrayOfDestinations.push(desto);
 	var result = rootRef.push(t);
 
 }
