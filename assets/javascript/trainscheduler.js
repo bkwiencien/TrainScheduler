@@ -133,8 +133,8 @@ function createATrain() {
 	var timediffms = nextArrival - now;
 	var duration = moment.duration(timediffms);
 	console.log("in createATrain duration = " + duration);
-	var minutesAway = duration/60000;
-	console.log("in createATrain seconds "+ duration.seconds());
+	var minutesAway = Math.round(duration/60000);
+	console.log("in createATrain seconds "+ duration.minutes());
 	console.log("in createATrain minutesAway = "+ minutesAway);
 
 }
