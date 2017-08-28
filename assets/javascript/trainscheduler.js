@@ -49,7 +49,6 @@ function Train(name,desto,freq,nexto,minawat) {
 	this.nextArrival  = momentTime.format('M Do YYYY, h:mm');
     minutesAway = minawat;
 	this.minutesAway = minawat;
-	console.log("in Train nextArrival " + nexto);
 };
 function clerk() {
   connectAs = "c";
@@ -113,23 +112,20 @@ function createATrain() {
 	var nameo = "";
 	var desto = "";
 	var freq = 0;
+	var nextArrival = "";
 	nameo = $("#train-name-input").val().trim();
 	desto = $("#destination-input").val().trim();
-	freq  = $("#frequency-input").val();
+	freq  = $("#frequency-input").val().trim();
 	if (nameo == "") {
 		$("#status").html("<strong>Train Name cannot be null</strong>");
 	}
 	if (desto == "") {
 		$("#status").html("<strong>Destination cannot be null</strong>");
 	}
-	console.log("name = " + nameo);
-	console.log("desto = " + desto);
-	console.log("freq = " + freq);
-	console.log("in create a train");
+	calculateNextArrival(freq);
 }
 function createTable() {
-	console.log("in createTable");
-	var arrayOfCatagories = ["Train Name","Destination","Frequency","Next Arrival","Minutes Away",];
+	var arrayOfCatagories = ["Train Naame","Destination","Frequency","Next Arrival","Minutes Away",];
 	var w;
 	var h;
 	var r = $("<tr>");
@@ -169,16 +165,13 @@ function createTable() {
 	$("#table-body").append(r);
 }
 function updateDataBase() {;
-	console.log("in update database");
 	for (i=0;i<arrayOfTrains.length;i++) {
-		console.log("nextArrival = " + arrayOfTrains[i].nextArrival);
 		var result = rootRef.push(arrayOfTrains[i]);
 		arrayOfRefs.push(result);
 	}
 
 }
 function updateMinutesAway() {
-	console.log("in updateMinutesAway");
 	for (i=0;i<arrayOfTrains.length;i++) {
 		if (arrayOfTrains[i].minutesAway > 0) {
 		  arrayOfTrains[i].minutesAway--;
@@ -194,6 +187,16 @@ function updateMinutesAway() {
 }
 function updateFireBase() {
 	console.log("in updateFireBase");
+}
+function calculateNextArrival(freq) {
+	var now = moment();
+	var start = moment().startOf('day');
+	var fstart = start.format('MMMM Do YYYY, h:mm:ss a');
+	var firstArrival = start.add(3,'hours');
+	var ffirstArrival = firstArrival.format('MMMM Do YYYY, h:mm:ss a');
+	var today3am;
+	console.log(ffirstArrival);
+	return(moment());
 }
 
 
