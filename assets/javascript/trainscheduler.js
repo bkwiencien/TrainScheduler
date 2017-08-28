@@ -201,10 +201,13 @@ function calculateNextArrival(freq) {
 	var hours    = duration.hours();
 	var minn = duration.minutes();
 	var totalMinutes = 60*hours + minn;
+	var modo = totalMinutes % freq;
 	console.log(ffirstArrival);
 	console.log(minn);
 	console.log(hours);
 	console.log("total minutes = " + totalMinutes);
+	console.log("modo = " + modo);
+	console.log("freq = " + freq);
 
 
 	return(moment());
