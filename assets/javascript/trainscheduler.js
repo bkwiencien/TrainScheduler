@@ -138,9 +138,37 @@ function createATrain() {
 	console.log("in createATrain minutesAway = "+ minutesAway);
 	var t = new Train(nameo,desto,freq,nextArrival,minutesAway);
 	arrayOfTrainNames.push(nameo);
-	arrayOfTrains.push(t);
+	var result = arrayOfTrains.push(t);
 	arrayOfDestinations.push(desto);
+	arrayOfRefs.push(result);
 	var result = rootRef.push(t);
+	//
+	    r = $("<tr>");
+		w=t;
+        name = w.trainName;
+        frequency = w.frequency;
+        nextArrival = w.nextArrival;
+        momentTime = moment(nextArrival);
+        nextArrivalFormatted = momentTime.format('M Do YYYY, h:mm');
+        minutesAway = w.minutesAway;
+        destination = w.destination;
+        data = $('<td>');
+        data.html(name);
+        r.append(data);
+        data = $("<td>");
+        data.html(destination);
+        r.append(data);
+        data = $("<td>");
+        data.html(frequency);
+        r.append(data)
+        data = $("<td>");
+        data.html(nextArrival);
+        r.append(data);
+        data=$("<td>");
+        data.attr("id","away"+i);
+        data.html(minutesAway);
+        r.append(data);
+        $("#table-body").append(r);
 
 }
 function createTable() {
