@@ -136,6 +136,9 @@ function createATrain() {
 	var minutesAway = Math.round(duration/60000);
 	console.log("in createATrain seconds "+ duration.minutes());
 	console.log("in createATrain minutesAway = "+ minutesAway);
+	var t = new Train(nameo,desto,freq,nextArrival,minutesAway);
+	arrayOfTrains.push(t);
+	var result = rootRef.push(t);
 
 }
 function createTable() {
