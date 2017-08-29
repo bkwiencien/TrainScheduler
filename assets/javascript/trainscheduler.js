@@ -57,14 +57,12 @@ function clerk() {
   $("#buttons").remove();
   $("#status").text("connected as clerk");
   $("#addtrain").remove();
-  //createTrains();
 }
 function administrator() {
   connectAs = "a";
   $("#buttons").remove();
   $("#status").text("connected as administrator");
   $("#addtrain").show();
-  //createTrains();
 }
 function createTrains() {
 	minaway = generateMinutes()
@@ -109,8 +107,6 @@ function initialize() {
 	//createTrains();
 	createTable();
 	$("#addtrain").show();
-	//rootRef.remove();
-	//updateDataBase();
 }
 function createATrain() {
 	var nameo = "";
@@ -153,9 +149,6 @@ function createATrain() {
 	arrayOfTrainNames.push(nameo);
 	var result = arrayOfTrains.push(t);
 	arrayOfDestinations.push(desto);
-	arrayOfRefs.push(result);
-	//var result = rootRef.push(t);
-	//
 	    r = $("<tr>");
 		w=t;
         name = w.trainName;
@@ -190,7 +183,7 @@ function createATrain() {
 		frequency: frequency,
 		dateAdded: firebase.database.ServerValue.TIMESTAMP
 	})
-    $("#status").html("<strong>Success</strong>");
+    $("#status").html("<strong>Success train added</strong>");
 }
 }
 function createTable() {
@@ -265,14 +258,7 @@ function calculateNextArrival(freq) {
 	 } else {
 	 	var modo = freq;
 	 }
-	console.log("3 AM " + ffirstArrival);
-	console.log(minn);
-	console.log(hours);
-	console.log("total minutes = " + totalMinutes);
-	console.log("modo = " + modo);
-	console.log("freq = " + freq);
 	var tt = now.add(modo,'minutes');
-	console.log("tt = " + tt.format('MMMM Do YYYY, h:mm:ss a'));
 	return(tt);
 }
 
