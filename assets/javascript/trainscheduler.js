@@ -106,10 +106,11 @@ function initialize() {
 	firebase.initializeApp(config);
 	database = firebase.database();
 	rootRef = firebase.database().ref("TrainScheduler");
-	createTrains();
+	//createTrains();
 	createTable();
-	rootRef.remove();
-	updateDataBase();
+	$("#addtrain").show();
+	//rootRef.remove();
+	//updateDataBase();
 }
 function createATrain() {
 	var nameo = "";
@@ -118,15 +119,27 @@ function createATrain() {
 	var nextArrival = "";
 	var minutesAway = 0;
 	var now = moment();
+	status = 0;
 	nameo = $("#train-name-input").val().trim();
 	desto = $("#destination-input").val().trim();
 	freq  = $("#frequency-input").val().trim();
-	if (nameo == "") {
+	if (nameo.length == 0) {
 		$("#status").html("<strong>Train Name cannot be null</strong>");
+		status = 1;
 	}
 	if (desto == "") {
 		$("#status").html("<strong>Destination cannot be null</strong>");
+		status =1;
 	}
+	if (desto.length == 0) {
+		$("#status").html("<strong>Destination cannot be null</strong>");
+		status = 1;
+	}
+	if (freq<30 ) {
+		$("#status").html("<strong>Frequency must be greater that 29 </strong>");
+		status =1;
+	}
+	if (status == 0) {
 	nextArrival = calculateNextArrival(freq);
 	console.log("in createATrain nextArrival = " + nextArrival.format('MMMM Do YYYY, h:mm:ss a'));
 	console.log("in createATrain now = " + now.format('MMMM Do YYYY, h:mm:ss a'));
@@ -141,7 +154,7 @@ function createATrain() {
 	var result = arrayOfTrains.push(t);
 	arrayOfDestinations.push(desto);
 	arrayOfRefs.push(result);
-	var result = rootRef.push(t);
+	//var result = rootRef.push(t);
 	//
 	    r = $("<tr>");
 		w=t;
@@ -169,7 +182,16 @@ function createATrain() {
         data.html(minutesAway);
         r.append(data);
         $("#table-body").append(r);
-
+        // add database logic here
+        database.ref().push(
+	{
+		trainName: name,
+		destination: destination,
+		frequency: frequency,
+		dateAdded: firebase.database.ServerValue.TIMESTAMP
+	})
+    $("#status").html("<strong>Success</strong>");
+}
 }
 function createTable() {
 	var arrayOfCatagories = ["Train Naame","Destination","Frequency","Next Arrival","Minutes Away",];
@@ -211,13 +233,6 @@ function createTable() {
 	}
 	$("#table-body").append(r);
 }
-function updateDataBase() {;
-	for (i=0;i<arrayOfTrains.length;i++) {
-		var result = rootRef.push(arrayOfTrains[i]);
-		arrayOfRefs.push(result);
-	}
-
-}
 function updateMinutesAway() {
 	for (i=0;i<arrayOfTrains.length;i++) {
 		if (arrayOfTrains[i].minutesAway > 0) {
@@ -230,10 +245,6 @@ function updateMinutesAway() {
 	    	$("#away"+i).html("arrived");
 	    }	
 	}
-	updateFireBase();
-}
-function updateFireBase() {
-	console.log("in updateFireBase");
 }
 function calculateNextArrival(freq) {
 	var now = moment();

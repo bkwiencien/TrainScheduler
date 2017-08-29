@@ -21,10 +21,6 @@
   <div clas="row">
     <div class="col-lg-5">
       <hr id="line1">
-      <div id="buttons">
-        <button onclick="javascript:administrator()">Connect as Administrator</button>
-        <button onclick="javascript:clerk()">Connect as clerk</button>
-      </div>  
     </div>
   </div>
   </div>  
@@ -32,7 +28,7 @@
          <div class="row">
       <hr id="line2">
       <section id="schedulesection">
-        <p id="status"> ............ </p>
+        <p id="status"> status: </p>
          <table class="table">
                 <thead> 
                    <tr>
@@ -48,19 +44,14 @@
             </table>
 
       </section>  
-      <div id="addtrain">
-        <form id="form1" action="javascript:createATrain()">
-          Train Name: <input id="train-name-input" type="text" name="name"><br>
-          Destination:  <input id="destination-input" type="text" name="dest"><br>
-          Frequency:  <input id="frequency-input" type="text" name="freq"><br>
-          <input type="submit" value="add train">
-        </form>  
-      </div>
-      </div>
-  </div>
-</div>    
-</div>
-</div>
+           <div id="addtrain">
+             <form id="form1" action="javascript:createATrain()">
+               Train Name: <input id="train-name-input" type="text" name="name"><br>
+               Destination:  <input id="destination-input" type="text" name="dest"><br>
+               Frequency:  <input id="frequency-input" type="text" name="freq"><br>
+               <input type="submit" value="add train">
+            </form>  
+          </div>    
 <script type="text/javascript" src="assets/javascript/trainscheduler.js"></script>
 <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 <script type="text/javascript" src="https://momentjs.com/downloads/moment.js"></script>
