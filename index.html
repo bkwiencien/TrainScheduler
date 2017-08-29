@@ -27,7 +27,6 @@
       <hr id="line2">
       <section id="schedulesection">
         <p id="status"> status: </p>
-        <h2><center> Add a Train to the schedule </center></h2>
          <table class="table">
                 <thead> 
                    <tr>
@@ -45,9 +44,12 @@
       </section>  
            <div id="addtrain">
              <form id="form1" action="javascript:createATrain()">
-               Train Name: <input id="train-name-input" type="text" name="name"><br>
-               Destination:  <input id="destination-input" type="text" name="dest"><br>
-               Frequency:  <input id="frequency-input" type="text" name="freq"><br>
+              <fieldset>
+                <legend>Add Train to the Schedule</legend>
+                 <span>Train Name: </span><input id="train-name-input" type="text" name="name"><br>
+                 <span>Destination:</span>  <input id="destination-input" type="text" name="dest"><br>
+                 <span>Frequency:</span>  <input id="frequency-input" type="text" name="freq"><br>
+              </fieldset>   
                <input type="submit" value="add train">
             </form>  
           </div>    
