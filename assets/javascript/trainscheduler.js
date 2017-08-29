@@ -124,14 +124,9 @@ function createATrain() {
 	}
 	if (status == 0) {
 	nextArrival = calculateNextArrival(freq);
-	console.log("in createATrain nextArrival = " + nextArrival.format('MMMM Do YYYY, h:mm:ss a'));
-	console.log("in createATrain now = " + now.format('MMMM Do YYYY, h:mm:ss a'));
 	var timediffms = nextArrival - now;
 	var duration = moment.duration(timediffms);
-	console.log("in createATrain duration = " + duration);
 	var minutesAway = Math.round(duration/60000);
-	console.log("in createATrain seconds "+ duration.minutes());
-	console.log("in createATrain minutesAway = "+ minutesAway);
 	var t = new Train(nameo,desto,freq,nextArrival,minutesAway);
 	arrayOfTrainNames.push(nameo);
 	var result = arrayOfTrains.push(t);
