@@ -2,6 +2,7 @@ var firstTime = true;
 var count = 0;
 var gencount = 0;
 var minAway;
+var database;
 var stationTimer = setInterval(function() {
 	    var dd = new Date();
 	    var day = dd.getDay();
@@ -42,7 +43,6 @@ var config = {
     messagingSenderId: "797447312452"
   };
  var rootRef;
-var database;
 function Train(name,desto,freq,nexto,minawat) {
 	this.trainName = name;
 	this.destination = desto;
@@ -52,18 +52,6 @@ function Train(name,desto,freq,nexto,minawat) {
     minutesAway = minawat;
 	this.minutesAway = minawat;
 };
-function clerk() {
-  connectAs = "c";
-  $("#buttons").remove();
-  $("#status").text("connected as clerk");
-  $("#addtrain").remove();
-}
-function administrator() {
-  connectAs = "a";
-  $("#buttons").remove();
-  $("#status").text("connected as administrator");
-  $("#addtrain").show();
-}
 function createTrains() {
 	minaway = generateMinutes()
 	var currentDate = new Date();
@@ -100,13 +88,11 @@ function addMinutes(datein,minutesin){
 	return new Date(datein.getTime() + minutesin*60000);
 }
 function initialize() {
-	$("#addtrain").hide();
 	firebase.initializeApp(config);
 	database = firebase.database();
 	rootRef = firebase.database().ref("TrainScheduler");
 	//createTrains();
 	createTable();
-	$("#addtrain").show();
 }
 function createATrain() {
 	var nameo = "";
@@ -115,7 +101,8 @@ function createATrain() {
 	var nextArrival = "";
 	var minutesAway = 0;
 	var now = moment();
-	status = 0;
+	var status = 0;
+	console.log("in createATrain");
 	nameo = $("#train-name-input").val().trim();
 	desto = $("#destination-input").val().trim();
 	freq  = $("#frequency-input").val().trim();
@@ -149,6 +136,9 @@ function createATrain() {
 	arrayOfTrainNames.push(nameo);
 	var result = arrayOfTrains.push(t);
 	arrayOfDestinations.push(desto);
+	arrayOfRefs.push(result);
+	var result = rootRef.push(t);
+	//
 	    r = $("<tr>");
 		w=t;
         name = w.trainName;
@@ -175,16 +165,16 @@ function createATrain() {
         data.html(minutesAway);
         r.append(data);
         $("#table-body").append(r);
-        // add database logic here
-        database.ref().push(
-	{
+             database.ref().push(
+	    {
 		trainName: name,
 		destination: destination,
 		frequency: frequency,
 		dateAdded: firebase.database.ServerValue.TIMESTAMP
 	})
     $("#status").html("<strong>Success train added</strong>");
-}
+      }  
+
 }
 function createTable() {
 	var arrayOfCatagories = ["Train Naame","Destination","Frequency","Next Arrival","Minutes Away",];
@@ -258,9 +248,18 @@ function calculateNextArrival(freq) {
 	 } else {
 	 	var modo = freq;
 	 }
+	console.log("3 AM " + ffirstArrival);
+	console.log(minn);
+	console.log(hours);
+	console.log("total minutes = " + totalMinutes);
+	console.log("modo = " + modo);
+	console.log("freq = " + freq);
 	var tt = now.add(modo,'minutes');
+	console.log("tt = " + tt.format('MMMM Do YYYY, h:mm:ss a'));
 	return(tt);
 }
+
+
 
 
 
