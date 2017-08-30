@@ -249,7 +249,7 @@ function calculateNextArrival(freq) {
 	console.log("total minutes = " + totalMinutes);
 	console.log("modo = " + modo);
 	console.log("freq = " + freq);
-	var tt = now.add(modo,'minutes');
+	var tt = now.add(freq-modo,'minutes');
 	console.log("tt = " + tt.format('MMMM Do YYYY, h:mm:ss a'));
 	return(tt);
 }
