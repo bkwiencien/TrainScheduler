@@ -128,6 +128,10 @@ function createATrain() {
 		$("#status").html("<strong>First Arrival Time cannot be null</strong>");
 		status =1;
 	}
+	if (first.length  !=  5 ) {
+		$("#status").html("<strong>Enter first arrival time as HH:MMl</strong>");
+		status =1;
+	}
 	if (status == 0) {
 	nextArrival = calculateNextArrival(freq,first);
 	var timediffms = nextArrival - now;
